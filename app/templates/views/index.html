@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block title %}Okhrana{% endblock %}
+
+
+{% block content %}
+<div id="form" class="container">
+    <form method="POST" action="/scan">
+        {{ form.hidden_tag() }}
+        {{ wtf.form_field(form.search)}}
+        {{ wtf.form_field(form.submit, class="btn btn-danger btn-lg")}}
+        {{ wtf.form_field(form.scan)}}
+    </form>
+</div>
+
+{% endblock %}
