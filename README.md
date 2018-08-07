@@ -7,6 +7,10 @@ There is a passive scan and an active, full scan mode. It's an ideal tool for re
 
 
 ### Passive modules
+* Have I Been Pwned
+* psbdmp.pw
+* Hunter
+
 * Twitter 
 * Linkedin
 * General social media
@@ -14,10 +18,10 @@ There is a passive scan and an active, full scan mode. It's an ideal tool for re
 * Threatcrowd
 * Censys.io
 * Github
-* Hunter
-* psbdmp
+
+
 * siph0n
-* Have I Been Pwned
+
 * https://ipinfodb.com/
 * https://cse.google.com/cse/
 * https://azure.microsoft.com/en-us/services/cognitive-services/bing-web-search-api/

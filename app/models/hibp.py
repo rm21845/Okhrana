@@ -1,7 +1,7 @@
 import requests
 
 
-class hibp(object):
+class hibp():
     def breaches(self, data):
         """
         :param data: username, name, email

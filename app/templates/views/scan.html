@@ -7,14 +7,15 @@
 <div class="page-header">
     <h1>Results for: <small>{{ data }}</small></h1>
 </div>
-
+{% for key, value in results.items() %}
 <div class="panel panel-default">
     <div class="panel-heading">
-      <h3 class="panel-title">Panel title</h3>
+      <h3 class="panel-title">{{ key }}</h3>
     </div>
     <div class="panel-body">
-      Panel content
+      {{ value }}
     </div>
   </div>
-  </div>
+  {% endfor %}
+</div>
 {% endblock %}

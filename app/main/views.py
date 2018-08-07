@@ -1,5 +1,8 @@
 from flask import render_template, session, redirect, url_for, request
 from app.models.hibp import hibp
+from app.models.psbdmp import psbdmp
+from app.models.hunter import hunter
+
 from . import main
 #from .. import db
 from . import forms
@@ -26,14 +29,29 @@ def index():
 @main.route('/scan', methods=['GET', 'POST'])
 def scan():
     data = request.form['search']
+    results = dict()
+    haveibeen = hibp()
+    pastedump = psbdmp()
+    hunt = hunter()
 
-    if email_validation(data):
-        print('Data is email.')
-    elif domain_validation(data):
-        print('Data is domain.')
-    elif ip_validation(data):
-        print('Data is ip')
-    else:
-        print('data is username')
+    scan_type = request.form['scan']
+    print(scan_type)
 
-    return render_template('views/scan.html', data=data)
+    if(scan_type == 'passive'):
+        if email_validation(data):
+            results['hibn_breaches'] = haveibeen.breaches(data)
+            results['hibn_pastes'] = haveibeen.pastes(data)
+            results['psbdmp.pw'] = pastedump.email(data)
+            results['hunter emails'] = hunt.verify_email(data)
+
+        elif domain_validation(data):
+            results['psbdmp.pw'] = pastedump.domain(data)
+            results['hunter emails'] = hunt.domain(data)
+        elif ip_validation(data):
+            print('Data is ip')
+        else:
+            results['hibn_breaches'] = haveibeen.breaches(data)
+            results['psbdmp.pw'] = pastedump.search(data)
+
+
+    return render_template('views/scan.html', data=data, results=results)
