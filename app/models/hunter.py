@@ -22,5 +22,5 @@ class hunter(object):
 
     def verify_email(self, email):
         """Check if a given email address is deliverable and has been found on the internet."""
-        r = requests.get(self.base + 'email-verifier?email=' + str(email) + self.key).json()
+        return requests.get(self.base + 'email-verifier?email=' + str(email) + self.key).json()
 

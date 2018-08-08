@@ -7,12 +7,12 @@ class threat_crowd(object):
         self.base = 'https://www.threatcrowd.org/searchApi/v2/'
 
     def domain(self, domain):
-        return requests.get(self.base + 'domain/report/?domain=' + str(domain))
+        return requests.get(self.base + 'domain/report/?domain=' + str(domain)).json()
 
     def ip_addr(self, ip_addr):
-        return requests.get(self.base + 'ip/report/?ip=' + str(ip_addr))
+        return requests.get(self.base + 'ip/report/?ip=' + str(ip_addr)).json()
 
     def email(self, email):
-        return requests.get(self.base + 'email/report/?email=' + str(email))
+        return requests.get(self.base + 'email/report/?email=' + str(email)).json()
 
 
