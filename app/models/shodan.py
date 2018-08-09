@@ -9,13 +9,21 @@ class Shodan(object):
     def ip_search(self, ip_addr):
         r = requests.get(self.base + '/shodan/host/' + str(ip_addr) + str(self.api)).json()
         results = dict()
-        results['region_code'] = r['region_code']
-        results['ip_addr'] = r['ip']
-        results['country'] = r['country_name']
-        results['postal'] = r['postal_code']
+        try:
+            results['region_code'] = r['region_code']
+        except KeyError:
+            pass 
+        try:
+            results['ip_addr'] = r['ip']
+        except KeyError:
+            pass
+        try:
+            results['country'] = r['country_name']
+        except KeyError:
+            pass
+        try:
+            results['postal'] = r['postal_code']
+        except KeyError:
+            pass
 
-
-"""
-        for key in r['data']:
-            print(key)
-"""
+        return results

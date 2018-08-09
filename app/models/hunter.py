@@ -9,14 +9,12 @@ class hunter(object):
     def domain(self, domain):
         """Get every email address found on the internet using a given domain name or comp, with sources."""
         r = requests.get(self.base + 'domain-search?domain=' + str(domain) + self.key).json()
-
         return [email['value'] for email in r['data']['emails']]
 
     def name(self, domain, first, last):
         """Find the email address of someone from his first name, last name and domain name."""
         r = requests.get(self.base + 'email-finder?domain=' + str(domain) +
                             '&first_name=' + str(first) + '&last_name=' + str(last) + self.key).json()
-
         data = r['data']
         return [data['first_name'], data['last_name'], data['email'], data['domain'], data['position']]
 

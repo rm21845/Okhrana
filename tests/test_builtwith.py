@@ -1,8 +1,9 @@
+"""
 import unittest
-from app.models.hibp import hibp
+from app.models.builtwith import builtwith
 
 
-class HaveIBPTestCase(unittest.TestCase):
+class BuiltyWithTestCase(unittest.TestCase):
     def setUp(self):
         self.pwned = hibp()
 
@@ -13,4 +14,5 @@ class HaveIBPTestCase(unittest.TestCase):
         self.assertIsNotNone(self.pwned.pastes('johnsmith@gmail.com'))
 
     def test_pastes1(self):
-        self.assertIsNone(self.pwned.pastes('johnsmith007@gmail.com'))
+        self.assertIsNotNone(self.pwned.pastes('johnsmith007@gmail.com'))
+"""
